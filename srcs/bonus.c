@@ -97,9 +97,8 @@ static void		ft_searchcolor(char **color, char *str, int *i, int j)
 		{
 			code = ft_create_code();
 			write(1, code[x], ft_strlen(code[x]));
-			free(color);
 			free(code);
-			*i = ((*i) + j) + 2;
+			*i = ((*i) + j) + 1;
 			return ;
 		}
 		x++;
@@ -131,5 +130,6 @@ void			ft_color(const char *restrict format, int *i)
 	}
 	ft_searchcolor(color, str, i, j);
 	free(str);
+	free(color);
 	(*i)--;
 }

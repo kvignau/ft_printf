@@ -24,13 +24,13 @@ int				ft_printf(const char *restrict format, ...)
 	va_start(arg, format);
 	while (format && format[i])
 	{
-		if (format[i] == '{')
+		if (format[i] == '%')
+			cpt += ft_percent(format, &i, &options, arg);
+		else if (format[i] == '{')
 		{
 			i++;
 			ft_color(format, &i);
 		}
-		if (format[i] == '%')
-			cpt += ft_percent(format, &i, &options, arg);
 		else
 			cpt += write(1, &(format[i]), 1);
 		i++;
